@@ -4,6 +4,7 @@ const sqlite3 = require('sqlite3')
 const { open } = require('sqlite')
 
 const app = express()
+const booksRouter = express.Router()
 const port = process.env.PORT || 3000
 const databasePath = path.join(__dirname, 'books.db')
 
@@ -79,15 +80,17 @@ const parseBookId = value => {
 let database
 
 app.get('/', (request, response) => {
-  response.json({ message: 'Books API is running. Use /books to view the collection.' })
+  response.json({
+    message: 'Books API is running. Use /books or /fundamentals/books to view the collection.',
+  })
 })
 
-app.get('/books/', async (request, response) => {
+booksRouter.get('/', async (request, response) => {
   const books = await database.all('SELECT * FROM book ORDER BY id')
   response.json(books)
 })
 
-app.get('/books/:bookId/', async (request, response) => {
+booksRouter.get('/:bookId/', async (request, response) => {
   const bookId = parseBookId(request.params.bookId)
   if (bookId === null) {
     return response.status(400).json({ error: 'Book ID must be a positive integer.' })
@@ -101,7 +104,7 @@ app.get('/books/:bookId/', async (request, response) => {
   response.json(book)
 })
 
-app.post('/books/', async (request, response) => {
+booksRouter.post('/', async (request, response) => {
   const { title, author, price, pages } = request.body
   if (!isValidBook({ title, author, price, pages })) {
     return response.status(400).json({
@@ -117,7 +120,7 @@ app.post('/books/', async (request, response) => {
   response.status(201).json(createdBook)
 })
 
-app.put('/books/:bookId/', async (request, response) => {
+booksRouter.put('/:bookId/', async (request, response) => {
   const bookId = parseBookId(request.params.bookId)
   if (bookId === null) {
     return response.status(400).json({ error: 'Book ID must be a positive integer.' })
@@ -142,7 +145,7 @@ app.put('/books/:bookId/', async (request, response) => {
   response.json(updatedBook)
 })
 
-app.delete('/books/:bookId/', async (request, response) => {
+booksRouter.delete('/:bookId/', async (request, response) => {
   const bookId = parseBookId(request.params.bookId)
   if (bookId === null) {
     return response.status(400).json({ error: 'Book ID must be a positive integer.' })
@@ -155,6 +158,8 @@ app.delete('/books/:bookId/', async (request, response) => {
 
   response.json({ message: 'Book deleted successfully.' })
 })
+
+app.use(['/books', '/fundamentals/books'], booksRouter)
 
 app.use((error, request, response, next) => {
   console.error(error)

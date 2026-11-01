@@ -13,6 +13,8 @@ npm start
 
 The API listens on `http://localhost:3000`. SQLite creates `books.db` automatically; that generated file is ignored by Git.
 
+The collection is available at both `/books/` and `/fundamentals/books/`; both paths use the same CRUD routes.
+
 ## API routes
 
 | Method | Route | Description |
