@@ -1,0 +1,15 @@
+{
+  "name": "bdf-lab-01",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend Development Fundamentals Lab 1: Node.js and Express server",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js",
+    "http": "node http-server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
