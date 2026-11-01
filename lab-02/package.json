@@ -1,0 +1,16 @@
+{
+  "name": "bdf-lab-02-books-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend Development Fundamentals Lab 2: SQLite CRUD API",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^6.0.1"
+  }
+}
