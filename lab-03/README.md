@@ -8,9 +8,9 @@
 
 **Subject:** Backend Development Fundamentals
 
-**Live API:** https://spoorthi-valluri-lab03-books-api.onrender.com/books
+Live server : https://spoorthi-valluri-lab03-books-api.onrender.com/books/
 
-**GitHub repository:** [spoorthivalluri/spoorthi-valluri-backend-development-fundamentals](https://github.com/spoorthivalluri/spoorthi-valluri-backend-development-fundamentals/tree/main/lab-03)
+GitHub Repository : https://github.com/spoorthivalluri/spoorthi-valluri-backend-development-fundamentals/tree/main/lab-03
 
 ## Project description
 
