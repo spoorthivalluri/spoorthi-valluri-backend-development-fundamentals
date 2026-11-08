@@ -8,7 +8,7 @@
 
 **Subject:** Backend Development Fundamentals
 
-**Live API:** Pending Render deployment. The service is configured for Render's free web service in [`../render.yaml`](../render.yaml); create the Blueprint in your Render account before a public URL exists. Add the actual URL here after Render creates it.
+**Live API:** https://spoorthi-valluri-lab03-books-api.onrender.com/books
 
 **GitHub repository:** [spoorthivalluri/spoorthi-valluri-backend-development-fundamentals](https://github.com/spoorthivalluri/spoorthi-valluri-backend-development-fundamentals/tree/main/lab-03)
 
