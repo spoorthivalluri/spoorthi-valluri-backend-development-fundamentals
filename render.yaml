@@ -2,6 +2,7 @@ services:
   - type: web
     name: spoorthi-valluri-lab03-books-api
     runtime: node
+    plan: free
     rootDir: lab-03
     buildCommand: npm install
     startCommand: npm start

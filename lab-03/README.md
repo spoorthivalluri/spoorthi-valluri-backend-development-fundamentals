@@ -8,7 +8,7 @@
 
 **Subject:** Backend Development Fundamentals
 
-**Live API:** Pending Render deployment. The service is configured in [`../render.yaml`](../render.yaml); connect this repository to Render and authorize the deployment before a public URL exists. Add the actual URL here after Render creates it.
+**Live API:** Pending Render deployment. The service is configured for Render's free web service in [`../render.yaml`](../render.yaml); create the Blueprint in your Render account before a public URL exists. Add the actual URL here after Render creates it.
 
 **GitHub repository:** [spoorthivalluri/spoorthi-valluri-backend-development-fundamentals](https://github.com/spoorthivalluri/spoorthi-valluri-backend-development-fundamentals/tree/main/lab-03)
 
@@ -39,7 +39,8 @@ No environment variables are required for local use. Render supplies `PORT` auto
 
 1. Sign in to Render and create a Blueprint using this GitHub repository.
 2. Approve the service described in `render.yaml` at the repository root.
-3. After the first successful deploy, copy the service URL into the **Live API** line above and verify `/` and `/books`.
+3. Confirm the web service uses the **Free** plan, then create the Blueprint.
+4. After the first successful deploy, copy the service URL into the **Live API** line above and verify `/` and `/books`.
 
 ## Endpoints
 
