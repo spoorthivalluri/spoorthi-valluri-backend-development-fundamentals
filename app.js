@@ -10,7 +10,7 @@ app.get('/', (request, response) => {
 app.get('/about', (request, response) => {
   response.json({
     name: 'Spoorthi Valluri',
-    section: 'Your Section',
+    section: '211 & CSE - 2E',
     subject: 'Backend Development Fundamentals',
   })
 })

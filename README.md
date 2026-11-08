@@ -45,4 +45,9 @@ BDF_LR/
 `-- README.md        # Setup, run instructions, and project notes
 ```
 
-In `app.js`, the `/` route sends a welcome message, `/about` returns student details as JSON, `/time` returns the current time, and the final middleware sends a 404 response for any other path. Replace the name and section placeholders in `/about` with your own details before submitting.
+In `app.js`, the `/` route sends a welcome message, `/about` returns Spoorthi Valluri's student details as JSON, `/time` returns the current time, and the final middleware sends a 404 response for any other path.
+
+## Course labs
+
+- [Lab 2: SQLite books CRUD API](lab-02/README.md)
+- [Lab 3: REST API query parameters, validation, and debugging](lab-03/README.md)

@@ -1,0 +1,17 @@
+{
+  "name": "bdf-lab-03-books-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend Development Fundamentals Lab 3: REST API query parameters and validation",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^6.0.1"
+  }
+}
