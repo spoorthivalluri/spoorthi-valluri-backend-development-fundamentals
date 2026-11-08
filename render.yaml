@@ -4,6 +4,6 @@ services:
     runtime: node
     plan: free
     rootDir: lab-03
-    buildCommand: npm install
+    buildCommand: npm install --build-from-source
     startCommand: npm start
     healthCheckPath: /

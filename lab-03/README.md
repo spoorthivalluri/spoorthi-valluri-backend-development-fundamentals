@@ -39,7 +39,7 @@ No environment variables are required for local use. Render supplies `PORT` auto
 
 1. Sign in to Render and create a Blueprint using this GitHub repository.
 2. Approve the service described in `render.yaml` at the repository root.
-3. Confirm the web service uses the **Free** plan, then create the Blueprint.
+3. Confirm the web service uses the **Free** plan, then create the Blueprint. The build compiles SQLite from source so its native module matches Render's Linux environment.
 4. After the first successful deploy, copy the service URL into the **Live API** line above and verify `/` and `/books`.
 
 ## Endpoints
