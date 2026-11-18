@@ -26,7 +26,7 @@ const openDatabase = async (databasePath = path.join(__dirname, 'users.db')) => 
   return database
 }
 
-const validateCredentials = body => {
+const validateCredentials = (body, requireName = false) => {
   if (body === null || typeof body !== 'object' || Array.isArray(body)) {
     return 'Request body must be a JSON object.'
   }
@@ -35,7 +35,10 @@ const validateCredentials = body => {
   if (typeof username !== 'string' || username.trim() === '') {
     return 'A non-empty username is required.'
   }
-  if (name !== undefined && (typeof name !== 'string' || name.trim() === '')) {
+  if (
+    (requireName || name !== undefined) &&
+    (typeof name !== 'string' || name.trim() === '')
+  ) {
     return 'Name must be a non-empty string.'
   }
   if (typeof password !== 'string' || password.length === 0) {
@@ -62,16 +65,13 @@ const createApp = database => {
   })
 
   app.post('/register', async (request, response) => {
-    const validationMessage = validateCredentials(request.body)
+    const validationMessage = validateCredentials(request.body, true)
     if (validationMessage) {
       return response.status(400).json({ message: validationMessage })
     }
 
     const username = request.body.username.trim()
-    const name =
-      typeof request.body.name === 'string' && request.body.name.trim()
-        ? request.body.name.trim()
-        : 'Samala Ashwitha'
+    const name = request.body.name.trim()
     const password = request.body.password
 
     const existingUser = await database.get(
@@ -115,7 +115,9 @@ const createApp = database => {
       return response.status(400).json({ message: 'Invalid username or password.' })
     }
 
-    const jwtToken = jwt.sign({ username: user.username }, JWT_SECRET)
+    const jwtToken = jwt.sign({ username: user.username }, JWT_SECRET, {
+      noTimestamp: true,
+    })
     response.status(200).json({ jwt_token: jwtToken })
   })
 

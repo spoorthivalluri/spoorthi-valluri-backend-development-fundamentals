@@ -60,6 +60,12 @@ test('registration, password hashing, login success and login failures', async t
   assert.equal(browserRequest.status, 404)
   assert.equal(browserRequest.body, 'Cannot GET /register')
 
+  const missingName = await request(server, 'POST', '/register', {
+    username: 'no-name',
+    password: 'secret123',
+  })
+  assert.equal(missingName.status, 400)
+
   const registered = await request(server, 'POST', '/register', {
     username: 'ashwitha',
     name: 'Samala Ashwitha',
@@ -89,8 +95,7 @@ test('registration, password hashing, login success and login failures', async t
   })
   assert.equal(successfulLogin.status, 200)
   const payload = jwt.verify(successfulLogin.body.jwt_token, JWT_SECRET)
-  assert.deepEqual(payload.username, 'ashwitha')
-  assert.equal('password' in payload, false)
+  assert.deepEqual(payload, { username: 'ashwitha' })
 
   const unknownUser = await request(server, 'POST', '/login', {
     username: 'unknown',

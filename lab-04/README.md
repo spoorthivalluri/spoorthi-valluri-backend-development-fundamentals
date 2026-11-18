@@ -49,6 +49,8 @@ The JWT secret is kept in `app.js` for this lab as required. Do not commit a rea
 | POST | `/register` | Register a user with a hashed password; reject duplicate usernames with `400`. |
 | POST | `/login` | Verify credentials and return `{ "jwt_token": "..." }` on success. |
 
+Both POST endpoints expect `Content-Type: application/json`.
+
 ### Registration example
 
 ```json
@@ -70,6 +72,12 @@ The JWT secret is kept in `app.js` for this lab as required. Do not commit a rea
 
 Unknown users and wrong passwords return `400`.
 
+## Postman checks and JWT
+
+In Postman, create POST requests to `/register` and `/login`, choose **Body → raw → JSON**, and send the example bodies above. Check that registration returns `201`, duplicate usernames return `400`, successful login returns `200` with `jwt_token`, and an unknown username or incorrect password returns `400`.
+
+To inspect a test login token, copy `jwt_token` from the login response and paste it into [jwt.io](https://jwt.io/). The decoded header identifies the signing algorithm (`HS256`) and token type (`JWT`). The payload contains the username only. The final segment is the signature, which verifies that the token was signed with the configured secret; it is not encrypted user data. Use a disposable test account/token for this exercise.
+
 ## Test
 
 Run the integration tests:
@@ -78,7 +86,7 @@ Run the integration tests:
 npm test
 ```
 
-The tests verify duplicate registration, bcrypt password storage, successful login, unknown users, wrong passwords, and that the JWT payload excludes the password.
+The tests verify required registration fields, duplicate registration, bcrypt password storage, successful login, unknown users, wrong passwords, and that the JWT payload contains only the username.
 
 ## Deploy
 
