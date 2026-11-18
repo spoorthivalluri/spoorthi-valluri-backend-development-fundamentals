@@ -52,35 +52,35 @@ test('registration, password hashing, login success and login failures', async t
   })
 
   const registered = await request(server, 'POST', '/register', {
-    username: 'spoorthi',
-    name: 'Spoorthi Valluri',
+    username: 'ashwitha',
+    name: 'Samala Ashwitha',
     password: 'secret123',
   })
   assert.equal(registered.status, 201)
 
   const duplicate = await request(server, 'POST', '/register', {
-    username: 'spoorthi',
-    name: 'Spoorthi Valluri',
+    username: 'ashwitha',
+    name: 'Samala Ashwitha',
     password: 'another',
   })
   assert.equal(duplicate.status, 400)
 
   const stored = await database.get(
     'SELECT username, name, password FROM users WHERE username = ?',
-    'spoorthi',
+    'ashwitha',
   )
-  assert.equal(stored.username, 'spoorthi')
-  assert.equal(stored.name, 'Spoorthi Valluri')
+  assert.equal(stored.username, 'ashwitha')
+  assert.equal(stored.name, 'Samala Ashwitha')
   assert.notEqual(stored.password, 'secret123')
   assert.equal(stored.password.startsWith('$2'), true)
 
   const successfulLogin = await request(server, 'POST', '/login', {
-    username: 'spoorthi',
+    username: 'ashwitha',
     password: 'secret123',
   })
   assert.equal(successfulLogin.status, 200)
   const payload = jwt.verify(successfulLogin.body.jwt_token, JWT_SECRET)
-  assert.deepEqual(payload.username, 'spoorthi')
+  assert.deepEqual(payload.username, 'ashwitha')
   assert.equal('password' in payload, false)
 
   const unknownUser = await request(server, 'POST', '/login', {
@@ -90,7 +90,7 @@ test('registration, password hashing, login success and login failures', async t
   assert.equal(unknownUser.status, 400)
 
   const wrongPassword = await request(server, 'POST', '/login', {
-    username: 'spoorthi',
+    username: 'ashwitha',
     password: 'wrong',
   })
   assert.equal(wrongPassword.status, 400)

@@ -1,14 +1,14 @@
 # Lab 4: Registration, login and JWT
 
-**Name:** Spoorthi Valluri
+**Name:** Samala Ashwitha
 
-**Registration number:** Not provided
+**Registration number:** 252U1R1223
 
 **Class & Section:** 211 & CSE - 2E
 
 **Subject:** Backend Development Fundamentals
 
-**Live link:** https://spoorthi-valluri-lab04-auth-api.onrender.com
+**Live link:** https://spoorthi-valluri-lab04-auth-api.onrender.com/register/
 
 **GitHub repository:** https://github.com/spoorthivalluri/spoorthi-valluri-backend-development-fundamentals/tree/main/lab-04
 
@@ -53,8 +53,8 @@ The JWT secret is kept in `app.js` for this lab as required. Do not commit a rea
 
 ```json
 {
-  "username": "spoorthi",
-  "name": "Spoorthi Valluri",
+  "username": "ashwitha",
+  "name": "Samala Ashwitha",
   "password": "secret123"
 }
 ```
@@ -63,7 +63,7 @@ The JWT secret is kept in `app.js` for this lab as required. Do not commit a rea
 
 ```json
 {
-  "username": "spoorthi",
+  "username": "ashwitha",
   "password": "secret123"
 }
 ```

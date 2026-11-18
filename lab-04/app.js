@@ -52,7 +52,21 @@ const createApp = database => {
   app.get('/', (request, response) => {
     response.json({
       message: 'Authentication API is running.',
-      student: 'Spoorthi Valluri',
+      student: 'Samala Ashwitha',
+      registrationNumber: '252U1R1223',
+    })
+  })
+
+  app.get(['/register', '/register/'], (request, response) => {
+    response.status(200).json({
+      message: 'Registration endpoint is ready.',
+      method: 'POST',
+      path: '/register',
+      body: {
+        username: 'string',
+        name: 'string',
+        password: 'string',
+      },
     })
   })
 
@@ -66,7 +80,7 @@ const createApp = database => {
     const name =
       typeof request.body.name === 'string' && request.body.name.trim()
         ? request.body.name.trim()
-        : 'Spoorthi Valluri'
+        : 'Samala Ashwitha'
     const password = request.body.password
 
     const existingUser = await database.get(
