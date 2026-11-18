@@ -28,7 +28,12 @@ const request = (server, method, route, body) =>
           data += chunk
         })
         response.on('end', () => {
-          resolve({ status: response.statusCode, body: data ? JSON.parse(data) : null })
+          const body =
+            response.headers['content-type'] &&
+            response.headers['content-type'].includes('application/json')
+              ? JSON.parse(data)
+              : data
+          resolve({ status: response.statusCode, body })
         })
       },
     )
@@ -50,6 +55,10 @@ test('registration, password hashing, login success and login failures', async t
     await database.close()
     await fs.rm(directory, { recursive: true, force: true })
   })
+
+  const browserRequest = await request(server, 'GET', '/register/')
+  assert.equal(browserRequest.status, 404)
+  assert.equal(browserRequest.body, 'Cannot GET /register')
 
   const registered = await request(server, 'POST', '/register', {
     username: 'ashwitha',

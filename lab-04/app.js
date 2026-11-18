@@ -58,16 +58,7 @@ const createApp = database => {
   })
 
   app.get(['/register', '/register/'], (request, response) => {
-    response.status(200).json({
-      message: 'Registration endpoint is ready.',
-      method: 'POST',
-      path: '/register',
-      body: {
-        username: 'string',
-        name: 'string',
-        password: 'string',
-      },
-    })
+    response.status(404).type('text').send('Cannot GET /register')
   })
 
   app.post('/register', async (request, response) => {
