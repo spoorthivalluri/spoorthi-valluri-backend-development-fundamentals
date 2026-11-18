@@ -51,3 +51,4 @@ In `app.js`, the `/` route sends a welcome message, `/about` returns Spoorthi Va
 
 - [Lab 2: SQLite books CRUD API](lab-02/README.md)
 - [Lab 3: REST API query parameters, validation, and debugging](lab-03/README.md)
+- [Lab 4: Registration, login and JWT](lab-04/README.md)

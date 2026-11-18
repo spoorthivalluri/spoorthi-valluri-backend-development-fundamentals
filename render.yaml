@@ -7,3 +7,11 @@ services:
     buildCommand: npm install && npm rebuild sqlite3 --build-from-source
     startCommand: npm start
     healthCheckPath: /
+  - type: web
+    name: spoorthi-valluri-lab04-auth-api
+    runtime: node
+    plan: free
+    rootDir: lab-04
+    buildCommand: npm install && npm rebuild sqlite3 --build-from-source
+    startCommand: npm start
+    healthCheckPath: /
